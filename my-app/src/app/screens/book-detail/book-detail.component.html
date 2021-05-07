@@ -1,0 +1,15 @@
+<div *ngIf="book == undefined">
+    <p class="text-danger">Loading...</p>
+</div>
+<div class="container" *ngIf="book != undefined">
+    <p>{{book.title}}</p>
+    <div class="row">
+        <div class="col-4">
+            <img [src]="book.image" class="img-thumbnail">
+            <h6>Tên sách : {{book.title}}</h6>
+            <h6>Price : {{book.price}}</h6>
+            <h6>Price : {{book.authorId}}</h6>
+        </div>
+        
+    </div>
+</div>

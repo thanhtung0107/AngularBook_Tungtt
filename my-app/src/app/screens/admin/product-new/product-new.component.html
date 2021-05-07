@@ -1,0 +1,88 @@
+<div class="row">
+    <div class="col-6 offset-3">
+      <form action="" (submit)="submitForm()" [formGroup]="rfForm">
+        <!-- Tên sách -->
+        <div class="form-group">
+          <label for="">Tên sách</label>
+          <input type="text" formControlName="title"
+                 class="form-control">
+        </div>
+        <div *ngIf="rfForm.controls.title.invalid && (rfForm.controls.title.dirty || rfForm.controls.title.touched)"
+             class="alert alert-danger">
+          <div *ngIf="rfForm.controls.title.errors?.required">
+            Bắt buộc nhập tên.
+          </div>
+          <div *ngIf="rfForm.controls.title.errors?.minlength">
+            Name must be at least 4 characters long.
+          </div>
+        </div>
+        <!-- Giá -->
+        <div class="form-group">
+          <label for="">Giá</label>
+          <input type="number" formControlName="price"
+                 class="form-control">
+        </div>
+        <div *ngIf="rfForm.controls.price.invalid && (rfForm.controls.price.dirty || rfForm.controls.price.touched)"
+             class="alert alert-danger">
+          <div *ngIf="rfForm.controls.price.errors?.required">
+            Bắt buộc nhập giá
+          </div>
+        </div>
+        <!-- Danh mục -->
+        <div class="form-group">
+          <label for="">Danh mục</label>
+  
+          <select formControlName="categoryId" class="form-control">
+            <option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</option>
+          </select>
+        </div>
+        <div
+          *ngIf="rfForm.controls.categoryId.invalid && (rfForm.controls.categoryId.dirty || rfForm.controls.categoryId.touched)"
+          class="alert alert-danger">
+          <div *ngIf="rfForm.controls.categoryId.errors?.required">
+            Bắt buộc nhập danh mục
+          </div>
+          <div *ngIf="rfForm.controls.categoryId.errors?.minlength">
+            Name must be at least 4 characters long.
+          </div>
+        </div>
+        <!-- Tác giả -->
+        <div class="form-group">
+          <label for="">Tác giả</label>
+          <select formControlName="authorId" class="form-control">
+            <option *ngFor="let author of auths" value="{{author.id}}">{{author.name}}</option>
+          </select>
+        </div>
+        <div
+          *ngIf="rfForm.controls.authorId.invalid && (rfForm.controls.authorId.dirty || rfForm.controls.authorId.touched)"
+          class="alert alert-danger">
+          <div *ngIf="rfForm.controls.authorId.errors?.required">
+            Name is required.
+          </div>
+          <div *ngIf="rfForm.controls.authorId.errors?.minlength">
+            Name must be at least 4 characters long.
+          </div>
+        </div>
+  
+        <!-- Ảnh -->
+        <div class="form-group">
+          <label for="">Ảnh</label>
+          <input type="text" formControlName="image"
+                 class="form-control" placeholder="Nhập link ảnh">
+        </div>
+        <div *ngIf="rfForm.controls.image.invalid && (rfForm.controls.image.dirty || rfForm.controls.image.touched)"
+             class="alert alert-danger">
+          <div *ngIf="rfForm.controls.image.errors?.required">
+            Name is required.
+          </div>
+          <div *ngIf="rfForm.controls.image.errors?.minlength">
+            Name must be at least 4 characters long.
+          </div>
+        </div>
+        <div class="text-center">
+          <button [disabled]="rfForm.invalid" type="submit" class="btn btn-primary">Lưu</button>
+        </div>
+      </form>
+    </div>
+  
+  </div>

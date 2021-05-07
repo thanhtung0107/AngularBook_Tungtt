@@ -1,0 +1,29 @@
+<table class="table table-striped">
+    <thead>
+    <th>#</th>
+    <th>Tên sách</th>
+    <th>Giá</th>
+    <th>Danh mục</th>
+    <th>Tác giả</th>
+    <th>Ảnh</th>
+    <th>
+      <a href="javascript:;" class="btn btn-success"
+         routerLink="/admin/sach/new">Tạo mới</a>
+    </th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let c of product; index as i">
+      <td>{{i + 1}}</td>
+      <td>{{c.title | titlecase}}</td>
+      <td>{{c.price | currency}}</td>
+      <td>{{cates[c.categoryId]}}</td>
+      <td>{{auths[c.authorId]}}</td>
+      <td><img src="{{c.image}}" alt="{{c.title}}" style="height: 150px; width: auto"></td>
+      <td>
+        <a href="javascript:;" class="btn btn-info"
+           routerLink="/admin/sach/edit/{{c.id}}">Sửa</a>
+        <a href="javascript:;" (click)="remove(c.id)" class="btn btn-danger">Xóa</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
